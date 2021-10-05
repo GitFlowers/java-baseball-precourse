@@ -52,6 +52,13 @@ public class ApplicationTest extends NSTest {
     	assertThat(numberStr).containsOnlyOnce(numberArr[2]);
     }
     
+    @Test
+    void 사용자_입력_빈값_체크() {
+    	BaseballManager baseballManager = new BaseballManager();
+    	assertThat(baseballManager.isEmpty(null)).isTrue();
+    	assertThat(baseballManager.isEmpty("")).isTrue();
+    }
+    
     @AfterEach
     void tearDown() {
         outputStandard();

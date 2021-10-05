@@ -5,3 +5,9 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 구현목록
+1. 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성하는 기능
+2. 스트라이크, 볼, 낫싱 판별 기능
+3. 유저 값 입력 기능
+4. 유저 입력값 유효성 체크

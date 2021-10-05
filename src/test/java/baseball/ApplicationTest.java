@@ -9,6 +9,7 @@ import org.mockito.MockedStatic;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
+import static org.assertj.core.api.Assertions.*;
 
 public class ApplicationTest extends NSTest {
     @BeforeEach
@@ -37,7 +38,20 @@ public class ApplicationTest extends NSTest {
             verify("3스트라이크", "게임 끝", "1스트라이크 1볼");
         }
     }
-
+    
+    @Test
+    void 중복_없는_3자리_숫자() {
+    	int startIncursive = 1;
+    	int endIncursive = 9;
+    	int numberLength = 3;
+    	BaseballMachine b = new BaseballMachine(startIncursive,  endIncursive, numberLength);
+    	String numberStr = b.generateTargetNumber();
+    	String[] numberArr = numberStr.split("");
+    	assertThat(numberStr).containsOnlyOnce(numberArr[0]);
+    	assertThat(numberStr).containsOnlyOnce(numberArr[1]);
+    	assertThat(numberStr).containsOnlyOnce(numberArr[2]);
+    }
+    
     @AfterEach
     void tearDown() {
         outputStandard();

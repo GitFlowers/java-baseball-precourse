@@ -35,11 +35,11 @@ public class BaseballManager {
 	}
 	
 	public boolean isEmpty(String value) {
-		if (StringUtil.isEmpty(value)) {
-			System.out.println("[ERROR] 빈값을 입력하셨습니다.");
-			return false;
+		if (!StringUtil.isEmpty(value)) {
+			return true;
 		}
-		return true;
+		System.out.println("[ERROR] 빈값을 입력하셨습니다.");
+		return false;
 	}
 	
 	public boolean isNumber(String value) {

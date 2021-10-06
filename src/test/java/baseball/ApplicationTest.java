@@ -78,7 +78,7 @@ public class ApplicationTest extends NSTest {
     @Test
     void 숫자_입력값_유효성_체크_실패() {
     	BaseballManager baseballManager = new BaseballManager();
-    	assertThat(baseballManager.isNumber("1ab")).isTrue();
+    	assertThat(baseballManager.isNumber("1ab")).isFalse();
     }
 
     @AfterEach

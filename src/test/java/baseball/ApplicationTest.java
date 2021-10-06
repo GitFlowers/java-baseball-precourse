@@ -57,13 +57,23 @@ public class ApplicationTest extends NSTest {
     }
     
     @Test
-    void 삼진_스트라이크_판정_확인() {
+    void 삼진_스트라이크_판정_성공() {
     	String computerGenerateNumber = "954";
     	String playerInputNumber = "954";
     	BallCount ballCount = BallCount.countWith(playerInputNumber, computerGenerateNumber);
     	assertThat(ballCount.isStrikeOut()).isTrue();
     	ballCount.printResult();
     	verify("3스트라이크");
+    }
+    
+    @Test
+    void BallCountClass_낫싱_확인() {
+    	String computerGenerateNumber = "954";
+    	String playerInputNumber = "123";
+    	BallCount ballCount = BallCount.countWith(playerInputNumber, computerGenerateNumber);
+    	assertThat(ballCount.isStrikeOut()).isFalse();
+    	ballCount.printResult();
+    	verify("낫싱");
     }
     
     @Test

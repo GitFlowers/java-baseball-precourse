@@ -111,6 +111,63 @@ public class ApplicationTest extends NSTest {
     	String compareNum2 = "1";
     	boolean result2 = (boolean)isStrike.invoke(ballCount, position2, compareNum2, computerGenerateNumber);
     	assertThat(result2).isFalse();
+    	
+    	int position3 = 2;
+    	String compareNum3 = "5";
+    	boolean result3 = (boolean)isStrike.invoke(ballCount, position3, compareNum3, computerGenerateNumber);
+    	assertThat(result3).isFalse();
+    }
+    
+    @Test
+    void 숫자_1개_볼_판정_성공() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    	String dummyForTest ="123";
+    	BallCount ballCount = BallCount.countWith(dummyForTest, dummyForTest);
+    	
+    	String methodName = "isBall";
+    	Method isStrike = ballCount.getClass().getDeclaredMethod(methodName, int.class, String.class, String.class);
+    	isStrike.setAccessible(true);
+    	
+    	int position = 0;
+    	String compareNum = "4";
+    	String computerGenerateNumber = "149";
+    	boolean result = (boolean)isStrike.invoke(ballCount, position, compareNum, computerGenerateNumber);
+    	assertThat(result).isTrue();
+    	
+    	int position2 = 1;
+    	String compareNum2 = "9";
+    	boolean result2 = (boolean)isStrike.invoke(ballCount, position2, compareNum2, computerGenerateNumber);
+    	assertThat(result2).isTrue();
+    	
+    	int position3 = 2;
+    	String compareNum3 = "1";
+    	boolean result3 = (boolean)isStrike.invoke(ballCount, position3, compareNum3, computerGenerateNumber);
+    	assertThat(result3).isTrue();
+    }
+    
+    @Test
+    void 숫자_1개_볼_판정_실패() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    	String dummyForTest ="123";
+    	BallCount ballCount = BallCount.countWith(dummyForTest, dummyForTest);
+    	
+    	String methodName = "isBall";
+    	Method isStrike = ballCount.getClass().getDeclaredMethod(methodName, int.class, String.class, String.class);
+    	isStrike.setAccessible(true);
+    	
+    	int position = 0;
+    	String compareNum = "6";
+    	String computerGenerateNumber = "149";
+    	boolean result = (boolean)isStrike.invoke(ballCount, position, compareNum, computerGenerateNumber);
+    	assertThat(result).isFalse();
+    	
+    	int position2 = 1;
+    	String compareNum2 = "2";
+    	boolean result2 = (boolean)isStrike.invoke(ballCount, position2, compareNum2, computerGenerateNumber);
+    	assertThat(result2).isFalse();
+    	
+    	int position3 = 2;
+    	String compareNum3 = "5";
+    	boolean result3 = (boolean)isStrike.invoke(ballCount, position3, compareNum3, computerGenerateNumber);
+    	assertThat(result3).isFalse();
     }
     
     @Test

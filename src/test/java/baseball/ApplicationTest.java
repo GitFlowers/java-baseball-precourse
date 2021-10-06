@@ -49,11 +49,13 @@ public class ApplicationTest extends NSTest {
     	int endIncursive = 9;
     	int numberLength = 3;
     	BaseballMachine b = new BaseballMachine(startIncursive,  endIncursive, numberLength);
-    	String numberStr = b.generateTargetNumber();
-    	String[] numberArr = numberStr.split("");
-    	assertThat(numberStr).containsOnlyOnce(numberArr[0]);
-    	assertThat(numberStr).containsOnlyOnce(numberArr[1]);
-    	assertThat(numberStr).containsOnlyOnce(numberArr[2]);
+    	for (int i = 0; i < 100; i++) {
+    		String numberStr = b.generateTargetNumber();
+        	String[] numberArr = numberStr.split("");
+        	assertThat(numberStr).containsOnlyOnce(numberArr[0]);
+        	assertThat(numberStr).containsOnlyOnce(numberArr[1]);
+        	assertThat(numberStr).containsOnlyOnce(numberArr[2]);
+    	}
     }
     
     @Test

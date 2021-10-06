@@ -9,6 +9,10 @@ import org.mockito.MockedStatic;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ApplicationTest extends NSTest {
@@ -63,10 +67,18 @@ public class ApplicationTest extends NSTest {
     }
     
     @Test
-    void 사용자_입력_빈값_체크() {
+    
+    @Test
+    void 사용자_입력_빈값인지_확인() {
     	BaseballManager baseballManager = new BaseballManager();
-    	assertThat(baseballManager.isEmpty(null)).isTrue();
-    	assertThat(baseballManager.isEmpty("")).isTrue();
+    	assertThat(baseballManager.isNotEmpty(null)).isFalse();
+    	assertThat(baseballManager.isNotEmpty("")).isFalse();
+    }
+    
+    @Test
+    void 사용자_입력_빈값_아닌지_확인() {
+    	BaseballManager baseballManager = new BaseballManager();
+    	assertThat(baseballManager.isNotEmpty("빈값이 아닙니다.")).isTrue();
     }
     
     @Test

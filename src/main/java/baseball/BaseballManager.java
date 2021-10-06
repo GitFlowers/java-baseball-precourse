@@ -31,15 +31,15 @@ public class BaseballManager {
 	}
 	
 	public boolean validatePlayerInput(String value) {
-		return isEmpty(value) && isNumber(value) && isSameLength(value);
+		return isNotEmpty(value) && isNumber(value) && isSameLength(value);
 	}
 	
-	public boolean isEmpty(String value) {
-		if (!StringUtil.isEmpty(value)) {
-			return true;
+	public boolean isNotEmpty(String value) {
+		if (StringUtil.isEmpty(value)) {
+			System.out.println("[ERROR] 빈값을 입력하셨습니다.");
+			return false;
 		}
-		System.out.println("[ERROR] 빈값을 입력하셨습니다.");
-		return false;
+		return true;
 	}
 	
 	public boolean isNumber(String value) {

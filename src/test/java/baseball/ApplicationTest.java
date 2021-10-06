@@ -67,6 +67,30 @@ public class ApplicationTest extends NSTest {
     }
     
     @Test
+    void 숫자_1개_스트라이크_판정_성공() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    	String dummyForTest ="123";
+    	BallCount ballCount = BallCount.countWith(dummyForTest, dummyForTest);
+    	
+    	String methodName = "isStrike";
+    	Method isStrike = ballCount.getClass().getDeclaredMethod(methodName, int.class, String.class, String.class);
+    	isStrike.setAccessible(true);
+    	
+    	int position = 0;
+    	String compareNum = "1";
+    	String computerGenerateNumber = "149";
+    	boolean result = (boolean)isStrike.invoke(ballCount, position, compareNum, computerGenerateNumber);
+    	assertThat(result).isTrue();
+    	
+    	int position2 = 1;
+    	String compareNum2 = "4";
+    	boolean result2 = (boolean)isStrike.invoke(ballCount, position2, compareNum2, computerGenerateNumber);
+    	assertThat(result2).isTrue();
+    	
+    	int position3 = 2;
+    	String compareNum3 = "9";
+    	boolean result3 = (boolean)isStrike.invoke(ballCount, position3, compareNum3, computerGenerateNumber);
+    	assertThat(result3).isTrue();
+    }
     
     @Test
     void 사용자_입력_빈값인지_확인() {
